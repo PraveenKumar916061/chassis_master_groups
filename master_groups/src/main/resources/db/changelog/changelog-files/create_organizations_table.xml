@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="3" author="Praveen">
+        <createTable tableName="organizations">
+            <column name="org_id" type="varchar(20)">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="org_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org_desc" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org_typ_id" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="int" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_ts" type="timestamp"/>
+            <column name="updated_ts" type="timestamp"/>
+            <column name="deleted_ts" type="timestamp" defaultValue="null"/>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="12" author="NK">
+        <addForeignKeyConstraint baseTableName="organizations" baseColumnNames="org_typ_id"
+                                 constraintName="fk_kkorg_id" referencedTableName="master_org_type"
+                                 referencedColumnNames="org_typ_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+</databaseChangeLog>

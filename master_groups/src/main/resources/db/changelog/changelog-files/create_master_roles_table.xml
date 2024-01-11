@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+ <changeSet id="4" author="Praveen">
+     <createTable tableName="master_roles">
+         <column name="role_id" type="varchar(20)">
+         <constraints primaryKey="true"/>
+         </column>
+         <column name="role_name" type="varchar(30)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="role_desc" type="varchar(150)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="created_by" type="varchar(30)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="updated_by" type="varchar(30)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="status" type="int" defaultValue="1">
+             <constraints nullable="false"/>
+         </column>
+         <column name="created_ts" type="timestamp">
+             <constraints nullable="false"/>
+         </column>
+
+         <column name="updated_ts" type="timestamp">
+             <constraints nullable="false"/>
+         </column>
+         <column name="deleted_ts" type="timestamp" defaultValue="null"/>
+
+     </createTable>
+ </changeSet>
+</databaseChangeLog>

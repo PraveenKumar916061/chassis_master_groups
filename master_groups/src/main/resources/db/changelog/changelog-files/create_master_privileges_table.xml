@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="6" author="Praveen">
+        <createTable tableName="master_privileges">
+            <column name="prvlg_id" type="varchar(20)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="prvlgs" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_role_specific_enable" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_user_specific_enable" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="int" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_ts" type="timestamp">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="updated_ts" type="timestamp">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="deleted_ts" type="timestamp" defaultValue="null">
+                <constraints nullable="true"></constraints>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="master_privileges"></dropTable>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

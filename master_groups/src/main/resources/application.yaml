@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: master_groups
+  datasource:
+    url: jdbc:postgresql://localhost:5432/organization
+    username: postgres
+    password: Im@g!nnoVaTe
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+    ddl-auto: none
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+
+
+server:
+  port: 8899

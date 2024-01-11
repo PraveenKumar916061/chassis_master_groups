@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+   <changeSet id="7" author="Praveen">
+       <createTable tableName="organization_members">
+           <column name="org_mem_id" type="varchar(20)">
+               <constraints primaryKey="true"/>
+           </column>
+           <column name="org_id" type="varchar(20)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="usr_id" type="varchar(20)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="role_id" type="varchar(20)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="prvlg_id" type="varchar(20)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="created_by" type="varchar(30)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="updated_by" type="varchar(30)">
+               <constraints nullable="false"/>
+           </column>
+           <column name="status" type="int" defaultValue="1">
+               <constraints nullable="false"/>
+           </column>
+           <column name="created_ts" type="timestamp">
+               <constraints nullable="false"/>
+           </column>
+           <column name="updated_ts" type="timestamp">
+               <constraints nullable="false"/>
+           </column>
+           <column name="deleted_ts" type="timestamp" defaultValue="null"/>
+       </createTable>
+   </changeSet>
+
+    <changeSet id="62" author="NK">
+        <addForeignKeyConstraint baseTableName="organization_members" baseColumnNames="org_id"
+                                 constraintName="fk_k1org_id" referencedTableName="organizations"
+                                 referencedColumnNames="org_id" onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="63" author="NK">
+        <addForeignKeyConstraint baseTableName="organization_members" baseColumnNames="usr_id"
+                                 constraintName="fk_k2usr_id" referencedTableName="users"
+                                 referencedColumnNames="usr_id" onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="64" author="NK">
+        <addForeignKeyConstraint baseTableName="organization_members" baseColumnNames="role_id"
+                                 constraintName="fk_k3role_id" referencedTableName="master_roles"
+                                 referencedColumnNames="role_id" onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="65" author="NK">
+        <addForeignKeyConstraint baseTableName="organization_members" baseColumnNames="prvlg_id"
+                                 constraintName="fk_k4prvlg_id" referencedTableName="master_privileges"
+                                 referencedColumnNames="prvlg_id" onDelete="CASCADE"/>
+
+    </changeSet>
+
+</databaseChangeLog>

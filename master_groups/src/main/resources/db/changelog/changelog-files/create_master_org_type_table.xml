@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="2" author="Praveen">
+        <createTable tableName="master_org_type">
+
+            <column name="org_typ_id" type="varchar(20)">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="org_typ_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="org_typ_desc" type="varchar(150)"/>
+
+            <column name="created_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="int" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_ts" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_ts" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_ts" type="timestamp" defaultValue="null"/>
+
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

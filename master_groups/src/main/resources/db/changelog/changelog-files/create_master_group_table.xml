@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="1" author="Praveen">
+        <createTable tableName="master_group">
+            <column name="group_id" type="varchar(20)">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="group_details" type="text">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="created_by" type="varchar(20)">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="updated_by" type="varchar(20)">
+                <constraints nullable="true"></constraints>
+            </column>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="true"></constraints>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="master_group"></dropTable>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
